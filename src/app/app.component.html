@@ -1,0 +1,29 @@
+<div id="app-wrapper">
+  <div id="loader"><mat-progress-bar *ngIf="displayLoading" mode="indeterminate"></mat-progress-bar></div>
+
+  <div id="sidenav-container">
+    <h1>WeatherMe</h1>
+
+    <div class="link-wrapper">
+      <mat-icon svgIcon="SEARCH"></mat-icon>
+      <p routerLink="/search">Search</p>
+    </div>
+
+    <div class="link-wrapper" mat-button>
+      <mat-icon svgIcon="EMPTY_FAVORITE"></mat-icon>
+      <p routerLink="/favorites">Favorites</p>
+    </div>
+
+    <mat-slide-toggle id="slide-toggle" (click)="changeTemperatureUnit()">
+      <label>
+        Temperature in Fahrenheit
+      </label>
+    </mat-slide-toggle>
+  </div>
+
+  <div id="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<ng-snotify></ng-snotify>
