@@ -76,12 +76,11 @@ export class SearchPage {
     this.filteredOptions$.subscribe(
       (c) => {
         this.Valid = true;
-        console.log(this.Valid);
       },
       (err) => {
         this.Valid = false;
-        this.currentLocationObject=null;
-        this.currentWeatherObject=null;
+        this.currentLocationObject = null;
+        this.currentWeatherObject = null;
         alert('oops' + err);
       }
     );
@@ -102,7 +101,6 @@ export class SearchPage {
   }
 
   getWeather() {
-    console.log('getWeather');
     this.currentLocationObject = this.searchInput.value;
     this.getCurrentWeather(this.currentLocationObject.Key);
   }
@@ -140,14 +138,12 @@ export class SearchPage {
     }
   }
   getForecast() {
-    console.log(this.currentLocationObject);
     this._weatherService.getForecast(this.currentLocationObject.Key).subscribe(
       (weather) => (this.forecast = weather),
       (err) => {
         alert('oops' + err);
       }
     );
-    console.log(this.forecast);
   }
   getSourceImg(day: DailyForecast): string {
     return '../../../assets/icons/' + day.Day.Icon + '.png';
