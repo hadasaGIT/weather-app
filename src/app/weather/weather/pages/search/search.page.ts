@@ -1,24 +1,12 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { element } from 'protractor';
-import { Observable, Subject } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  finalize,
-  map,
-  startWith,
-  switchMap,
-  tap,
-} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { FavoritesService } from 'src/app/core/services/favorites.service';
 import { LocationService } from 'src/app/core/services/location.service';
 import { WeatherService } from 'src/app/core/services/weather.service';
 import { CurrentWeather } from 'src/app/shared/models/currentWeather.model';
 import { Location } from 'src/app/shared/models/location.model';
 import { Forecast, DailyForecast } from 'src/app/shared/models/forecast.model';
-
-import { EventEmitter } from 'stream';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

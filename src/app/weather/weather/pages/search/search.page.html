@@ -27,7 +27,7 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
-
+<h2 style="font-size: 30px">Weather Forecast:</h2>
 <mat-card
   class="card"
   *ngIf="Valid&&currentLocationObject&&currentWeatherObject"
@@ -79,6 +79,7 @@
   </mat-card-actions>
 </mat-card>
 
+<h2>Weather forecast for the next few days:</h2>
 <div class="cards" *ngIf="forecast">
   <mat-card class="card" *ngFor="let day of forecast.DailyForecasts">
     <p>Date: {{day.Date| date:'shortDate'}}</p>

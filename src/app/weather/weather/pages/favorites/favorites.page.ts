@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavoritesService } from 'src/app/core/services/favorites.service';
 import { WeatherService } from 'src/app/core/services/weather.service';
 import { CurrentWeather } from 'src/app/shared/models/currentWeather.model';
@@ -24,13 +25,15 @@ export class FavoritesPage {
   }
   constructor(
     private _favoritesService: FavoritesService,
-    private _weatherService: WeatherService
+    private _weatherService: WeatherService,
+    private _snackBar: MatSnackBar
   ) {}
   getFavoritesList() {
     this.favorites = this._favoritesService.getFavorites();
   }
   removeFromFavorites(locationKey: string) {
     this._favoritesService.removeFromFavorites(locationKey);
+    this._snackBar.open('Location deleted successfully!!', 'x');
   }
   isFavorite(locationKey: string): boolean {
     return this._favoritesService.IsFavorite(locationKey);
