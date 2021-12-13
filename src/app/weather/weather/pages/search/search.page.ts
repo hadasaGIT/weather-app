@@ -42,7 +42,7 @@ export class SearchPage {
         }
       },
       (err) => {
-        alert('oops' + err);
+        alert('oops' + err.message);
       }
     );
     this._weatherService.temperatureUnitChanged.subscribe((p) => {
