@@ -1,29 +1,33 @@
-<div id="app-wrapper">
-  <div id="loader"><mat-progress-bar *ngIf="displayLoading" mode="indeterminate"></mat-progress-bar></div>
-
-  <div id="sidenav-container">
-    <h1>WeatherMe</h1>
-
-    <div class="link-wrapper">
-      <mat-icon svgIcon="SEARCH"></mat-icon>
-      <p routerLink="/search">Search</p>
+<mat-sidenav-container>
+  <mat-toolbar style="border-bottom: 0.7px solid #a59393">
+    <div id="loader">
+      <mat-progress-bar
+        *ngIf="displayLoading"
+        mode="indeterminate"
+      ></mat-progress-bar>
     </div>
+    <div class="circle"></div>
+    <span>WeatherMe</span>
 
-    <div class="link-wrapper" mat-button>
-      <mat-icon svgIcon="EMPTY_FAVORITE"></mat-icon>
-      <p routerLink="/favorites">Favorites</p>
-    </div>
+    <span class="example-spacer"></span>
+    <button mat-button color="primary" routerLink="/search">
+      Search
+      <mat-icon>search</mat-icon>
+    </button>
 
-    <mat-slide-toggle id="slide-toggle" (click)="changeTemperatureUnit()">
-      <label>
-        Temperature in Fahrenheit
-      </label>
+    <button mat-button color="primary" routerLink="/favorites">
+      favorites
+      <mat-icon>favorites</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+
+    <mat-slide-toggle (click)="toggleDarkLight()">Dark</mat-slide-toggle>
+
+    <mat-slide-toggle (click)="changeTemperatureUnit()">
+      <mat-label>Fahrenheit</mat-label>
     </mat-slide-toggle>
-  </div>
-
-  <div id="content-wrapper">
+  </mat-toolbar>
+  <div [ngClass]="{ dark: dark, light: !dark }">
     <router-outlet></router-outlet>
   </div>
-</div>
-
-<ng-snotify></ng-snotify>
+</mat-sidenav-container>

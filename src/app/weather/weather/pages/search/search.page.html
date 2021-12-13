@@ -1,0 +1,105 @@
+<form class="form" (ngSubmit)="getWeather()" style="margin-top: 4%">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>search</mat-label>
+    <input
+      type="text"
+      placeholder="Type a city name"
+      aria-label="search"
+      matInput
+      [formControl]="searchInput"
+      [matAutocomplete]="auto"
+      (keypress)="keyPressAlpha($event)"
+      (keyup.enter)="getWeather()"
+      (ngModelChange)="autoComplete()"
+    />
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      [displayWith]="displayLocation"
+    >
+      <mat-option
+        *ngFor="let option of filteredOptions$ | async"
+        [value]="option"
+        (click)="getWeather()"
+      >
+        {{option.LocalizedName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<mat-card
+  class="card"
+  *ngIf="Valid&&currentLocationObject&&currentWeatherObject"
+>
+  <p>
+    Today-{{currentWeatherObject.LocalObservationDateTime| date:'shortDate'}}
+  </p>
+  <h1>{{currentWeatherObject.LocalObservationDateTime| date:'EEEE' }}</h1>
+  <mat-card-title *ngIf="currentLocationObject.LocalizedName"
+    >{{currentLocationObject.LocalizedName}},
+    {{currentLocationObject.Country.LocalizedName}}</mat-card-title
+  >
+  <img [src]="sourceImg" />
+
+  <div *ngIf="!isMetric">
+    <mat-card-title
+      >{{currentWeatherObject.Temperature.Metric.Value}}°</mat-card-title
+    >
+    <p>Celsius</p>
+  </div>
+
+  <div *ngIf="isMetric">
+    <mat-card-title
+      >{{currentWeatherObject.Temperature.Imperial.Value}}°</mat-card-title
+    >
+    <p>Fahrenheit</p>
+  </div>
+
+  <p *ngIf="currentWeatherObject.HasPrecipitation">
+    Precipitation:{{currentWeatherObject.HasPrecipitation}}
+  </p>
+  <mat-card-subtitle>{{currentWeatherObject.WeatherText}}</mat-card-subtitle>
+
+  <mat-card-subtitle *ngIf="currentWeatherObject.IsDayTime" style="color: black"
+    >The weather to this day</mat-card-subtitle
+  >
+  <mat-card-subtitle
+    *ngIf="!currentWeatherObject.IsDayTime"
+    style="color: white; background-color: black"
+    >The weather to this night</mat-card-subtitle
+  >
+
+  <button routerLink="{{currentWeatherObject.Link}}">read more</button>
+  <mat-card-actions>
+    <button mat-icon-button color="warn" (click)="favorite()">
+      <mat-icon *ngIf="isFavorite">favorite</mat-icon>
+      <mat-icon *ngIf="!isFavorite">favorite_border</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="cards" *ngIf="forecast">
+  <mat-card class="card" *ngFor="let day of forecast.DailyForecasts">
+    <p>Date: {{day.Date| date:'shortDate'}}</p>
+    <h1>{{day.Date| date:'EEEE' }}</h1>
+
+    <img [src]="getSourceImg(day)" />
+    <div *ngIf="!isMetric">
+      <mat-card-title
+        >{{day.Temperature.Minimum.Value}}° -
+        {{day.Temperature.Maximum.Value}}°</mat-card-title
+      >
+      <p>Celsius</p>
+    </div>
+    <div *ngIf="isMetric">
+      <mat-card-title
+        >{{convert(day.Temperature.Minimum.Value)| number : '1.0-2' }}° -
+        {{convert(day.Temperature.Maximum.Value)| number : '1.0-2'
+        }}°</mat-card-title
+      >
+      <p>Fahrenheit</p>
+    </div>
+    <mat-card-subtitle>{{day.Day.IconPhrase}}</mat-card-subtitle>
+  </mat-card>
+</div>

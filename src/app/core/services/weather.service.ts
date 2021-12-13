@@ -6,7 +6,7 @@ import { Forecast } from 'src/app/shared/models/forecast.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WeatherService {
   isMetric = true;
@@ -22,15 +22,23 @@ export class WeatherService {
     params = params.append('apikey', environment.apiKey);
     params = params.append('metric', isMetric);
 
-    return this.httpClient.get<Forecast>(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}`, { params });
+    return this.httpClient.get<Forecast>(
+      `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}`,
+      { params }
+    );
   }
 
   getCurrentWeather(locationKey: string): Observable<CurrentWeather> {
     let params: HttpParams = new HttpParams();
     params = params.append('apikey', environment.apiKey);
 
-    return this.httpClient.get<CurrentWeather>(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}`, { params });
+    return this.httpClient.get<CurrentWeather>(
+      `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}`,
+      { params }
+    );
   }
 
 
+
+    
 }

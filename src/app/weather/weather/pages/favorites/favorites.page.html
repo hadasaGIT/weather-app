@@ -1,0 +1,57 @@
+<div *ngIf="weatherArr">
+  <div class="cards" *ngIf="favorites[0] else noFavorite">
+    <h2>The favorites:</h2>
+    <mat-card
+      class="card"
+      *ngFor="let favorite of favorites"
+      routerLink="/search/{{favorite.Key}}"
+    >
+      <p>The weather in:</p>
+
+      <mat-card-title
+        >{{favorite.LocalizedName}},
+        {{favorite.Country.LocalizedName}}</mat-card-title
+      >
+      <div *ngIf="!isMetric">
+        <mat-card-title
+          >{{weatherArr[getIndex(favorite.Key)].Temperature.Metric.Value}}°</mat-card-title
+        >
+        <p>Celsius</p>
+      </div>
+
+      <div *ngIf="isMetric">
+        <mat-card-title
+          >{{weatherArr[getIndex(favorite.Key)].Temperature.Imperial.Value}}°</mat-card-title
+        >
+        <p>Fahrenheit</p>
+      </div>
+
+      <mat-card-subtitle
+        >{{weatherArr[getIndex(favorite.Key)].WeatherText}}</mat-card-subtitle
+      >
+
+      <mat-card-actions>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="removeFromFavorites(favorite.Key)"
+        >
+          <mat-icon *ngIf="isFavorite(favorite.Key)">delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #noFavorite>
+  <div class="card">
+    <p style="color: blue; padding-top: 5%; font-size: -webkit-xxx-large">
+      No favorite to display
+    </p>
+    <div style="margin: 5%">
+      <button mat-button color="primary" routerLink="/search">
+        <mat-icon>favorite_border</mat-icon> Add favorite
+      </button>
+    </div>
+  </div>
+</ng-template>

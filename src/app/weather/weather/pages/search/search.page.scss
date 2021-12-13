@@ -1,0 +1,45 @@
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+body{
+  text-align: center;
+
+}
+.example-full-width {
+  width: 60%;
+
+    display: inline-block;
+    position: relative;
+}
+
+.mat-card{
+  display: inline-block;
+      position: relative;
+      padding: 16px;
+      width:35%;
+      border-radius: 4px;
+}
+mat-form-field {
+  display: block;
+}
+.card{
+    border: 0.7px solid #a59393;
+    width:20vw;
+    margin: 1vw;
+}
+.mat-card>:first-child,
+.mat-card-content>:first-child {
+  margin-top: 0;
+  width: 45%;
+}
+.cards{
+  display: flex;
+  justify-content: center;
+}
+img{
+      width: 11vw;
+}

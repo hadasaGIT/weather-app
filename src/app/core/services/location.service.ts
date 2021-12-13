@@ -5,7 +5,7 @@ import { Location } from 'src/app/shared/models/location.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocationService {
   constructor(private httpClient: HttpClient) {}
@@ -14,14 +14,20 @@ export class LocationService {
     let params: HttpParams = new HttpParams();
     params = params.append('apikey', environment.apiKey);
     params = params.append('q', searchText);
-    
-    return this.httpClient.get<Location[]>('http://dataservice.accuweather.com/locations/v1/cities/autocomplete', { params });
+
+    return this.httpClient.get<Location[]>(
+      'http://dataservice.accuweather.com/locations/v1/cities/autocomplete',
+      { params }
+    );
   }
 
   getLocationByKey(locationKey: string): Observable<Location> {
     let params: HttpParams = new HttpParams();
     params = params.append('apikey', environment.apiKey);
 
-    return this.httpClient.get<Location>(`http://dataservice.accuweather.com/locations/v1/${locationKey}`, { params });
+    return this.httpClient.get<Location>(
+      `http://dataservice.accuweather.com/locations/v1/${locationKey}`,
+      { params }
+    );
   }
 }
