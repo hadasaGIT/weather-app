@@ -1,7 +1,8 @@
+<h2>The favorites:</h2>
 <div *ngIf="weatherArr">
-  <div class="cards" *ngIf="favorites[0] else noFavorite">
-    <h2>The favorites:</h2>
+  <div class="cards" style="margin: 12%" *ngIf="favorites[0] else noFavorite">
     <mat-card
+      class="cards"
       class="card"
       *ngFor="let favorite of favorites"
       routerLink="/search/{{favorite.Key}}"
