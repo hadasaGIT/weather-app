@@ -13,6 +13,7 @@ img {
   width: 35%;
   border-radius: 4px;
   margin-right: 5%;
+  cursor: pointer;
 }
 
 .cards {
@@ -38,7 +39,6 @@ img {
   color: #444341;
 }
 
-
 /* CSS */
 .button-56 {
   align-items: center;
@@ -48,11 +48,11 @@ img {
   box-sizing: border-box;
   color: #111;
   cursor: pointer;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   height: 48px;
   justify-content: center;
-  
+
   line-height: 24px;
   max-width: 100%;
   padding: 0 25px;
@@ -75,7 +75,7 @@ img {
   position: absolute;
   top: -2px;
   transform: translate(8px, 8px);
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
   z-index: -1;
 }
 

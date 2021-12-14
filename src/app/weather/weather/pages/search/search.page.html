@@ -1,4 +1,8 @@
-<form class="form" (ngSubmit)="getWeather()" style="padding-top: 4%;margin-top: 4%">
+<form
+  class="form"
+  (ngSubmit)="getWeather()"
+  style="padding-top: 4%; margin-top: 4%"
+>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>search</mat-label>
     <input
@@ -42,14 +46,14 @@
   >
   <img [src]="sourceImg" />
 
-  <div *ngIf="!isMetric">
+  <div *ngIf="isMetric">
     <mat-card-title
       >{{currentWeatherObject.Temperature.Metric.Value}}°</mat-card-title
     >
     <p>Celsius</p>
   </div>
 
-  <div *ngIf="isMetric">
+  <div *ngIf="!isMetric">
     <mat-card-title
       >{{currentWeatherObject.Temperature.Imperial.Value}}°</mat-card-title
     >
@@ -86,14 +90,14 @@
     <h1>{{day.Date| date:'EEEE' }}</h1>
 
     <img [src]="getSourceImg(day)" />
-    <div *ngIf="!isMetric">
+    <div *ngIf="isMetric">
       <mat-card-title
         >{{day.Temperature.Minimum.Value}}° -
         {{day.Temperature.Maximum.Value}}°</mat-card-title
       >
       <p>Celsius</p>
     </div>
-    <div *ngIf="isMetric">
+    <div *ngIf="!isMetric">
       <mat-card-title
         >{{convert(day.Temperature.Minimum.Value)| number : '1.0-2' }}° -
         {{convert(day.Temperature.Maximum.Value)| number : '1.0-2'

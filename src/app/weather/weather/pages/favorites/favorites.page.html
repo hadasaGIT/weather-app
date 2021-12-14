@@ -13,14 +13,14 @@
         >{{favorite.LocalizedName}},
         {{favorite.Country.LocalizedName}}</mat-card-title
       >
-      <div *ngIf="!isMetric">
+      <div *ngIf="isMetric">
         <mat-card-title
           >{{weatherArr[getIndex(favorite.Key)].Temperature.Metric.Value}}°</mat-card-title
         >
         <p>Celsius</p>
       </div>
 
-      <div *ngIf="isMetric">
+      <div *ngIf="!isMetric">
         <mat-card-title
           >{{weatherArr[getIndex(favorite.Key)].Temperature.Imperial.Value}}°</mat-card-title
         >
