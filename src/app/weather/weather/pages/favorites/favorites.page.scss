@@ -12,16 +12,88 @@ img {
   padding: 16px;
   width: 35%;
   border-radius: 4px;
-   margin-right: 5%;
-
-}
-h2{
-  text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size:30px;
+  margin-right: 5%;
 }
 
 .cards {
   display: flex;
   justify-content: center;
+}
+.no-favorite {
+  color: #603535;
+  padding-top: 6%;
+  font-size: 300%;
+  font-family: monospace;
+}
+.wood-text {
+  background: url(https://i.imgur.com/OUyfQnt.jpg);
+  background-size: cover;
+  position: relative;
+  font-size: 87px;
+  padding-top: 5%;
+  border-bottom: 6.7px solid;
+  text-transform: uppercase;
+  height: 11vh;
+  font-family: "Rancho", cursive;
+  color: #444341;
+}
+
+
+/* CSS */
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
 }

@@ -1,5 +1,12 @@
 <mat-sidenav-container>
-  <mat-toolbar style="border-bottom: 0.7px solid #a59393">
+  <mat-toolbar
+    style="
+      border-bottom: 0.7px solid #a59393;
+      position: fixed;
+      top: 0;
+      z-index: 2;
+    "
+  >
     <div id="loader">
       <mat-progress-bar
         *ngIf="displayLoading"

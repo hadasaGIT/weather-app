@@ -1,4 +1,4 @@
-<h2>The favorites:<mat-icon>favorite</mat-icon></h2>
+<div class="wood-text" style="top: 0; margin-top: 4%">The favorites ❤:</div>
 
 <div *ngIf="weatherArr">
   <div class="cards" style="margin: 12%" *ngIf="favorites[0] else noFavorite">
@@ -46,12 +46,10 @@
 
 <ng-template #noFavorite>
   <div class="card">
-    <p style="color: blue; padding-top: 5%; font-size: -webkit-xxx-large">
-      No favorite to display
-    </p>
+    <p class="no-favorite">No favorite to display</p>
     <div style="margin: 5%">
-      <button mat-button color="primary" routerLink="/search">
-        <mat-icon>favorite_border</mat-icon> Add favorite
+      <button routerLink="/search" class="button-56" role="button">
+        Add favorite ❤
       </button>
     </div>
   </div>

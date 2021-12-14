@@ -31,7 +31,6 @@ export class SearchPage {
     private _favoritesService: FavoritesService,
     private _route: ActivatedRoute
   ) {}
-
   ngOnInit() {
     this._route.params.subscribe(
       (p) => {
@@ -49,14 +48,12 @@ export class SearchPage {
       this.isMetric = this._weatherService.isMetric;
     });
   }
-
   keyPressAlpha(event) {
     var inp = String.fromCharCode(event.keyCode);
     if (!/[a-zA-Z]/.test(inp)) {
       event.preventDefault();
     }
   }
-
   autoComplete() {
     this.filteredOptions$ = this._locationService.getAutocompleteLocation(
       this.searchInput.value
@@ -69,7 +66,7 @@ export class SearchPage {
         this.Valid = false;
         this.currentLocationObject = null;
         this.currentWeatherObject = null;
-        alert('oops' + err);
+        alert('oops ' + err.message);
       }
     );
   }
@@ -80,14 +77,13 @@ export class SearchPage {
         this.getCurrentWeather(this.currentLocationObject.Key);
       },
       (err) => {
-        alert('oops' + err);
+        alert('oops ' + err.message);
       }
     );
   }
   displayLocation(location: Location) {
     return location && location.LocalizedName ? location.LocalizedName : '';
   }
-
   getWeather() {
     this.currentLocationObject = this.searchInput.value;
     this.getCurrentWeather(this.currentLocationObject.Key);
@@ -104,11 +100,10 @@ export class SearchPage {
         this.getForecast();
       },
       (err) => {
-        alert('oops' + err);
+        alert('oops ' + err.message);
       }
     );
   }
-
   getIsFavorite() {
     this.isFavorite = this._favoritesService.IsFavorite(
       this.currentLocationObject.Key
@@ -129,7 +124,7 @@ export class SearchPage {
     this._weatherService.getForecast(this.currentLocationObject.Key).subscribe(
       (weather) => (this.forecast = weather),
       (err) => {
-        alert('oops' + err);
+        alert('oops ' + err.message);
       }
     );
   }
